@@ -1,10 +1,16 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, ScrollView, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 import {parseString} from 'react-native-xml2js';
 import moment from 'moment';
 import ShowListItem from './ShowListItem';
 
-const ShowsList = () => {
+const ShowsList = ({navigation}) => {
   const [shows, setShows] = useState({});
   // console.log(shows);
 
@@ -36,7 +42,17 @@ const ShowsList = () => {
 
   const items =
     shows.Show &&
-    shows.Show.map((show, index) => <ShowListItem show={show} key={index} />);
+    shows.Show.map((show, index) => (
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('MovieDetails', {
+            show: shows.Show[index],
+          })
+        }
+        key={index}>
+        <ShowListItem show={show} />
+      </TouchableOpacity>
+    ));
 
   return <ScrollView>{shows === {} ? loading : items}</ScrollView>;
 };
