@@ -4,6 +4,8 @@ import QtQuick.Controls 2.5
 Page {
     width: 600
     height: 400
+    property alias bubble: bubble
+    property alias mainWindow: mainWindow
 
     header: Label {
         text: qsTr("Page 1")
@@ -11,8 +13,13 @@ Page {
         padding: 10
     }
 
-    Label {
-        text: qsTr("You are on Page 1.")
-        anchors.centerIn: parent
+    Rectangle {
+        id: mainWindow
+        color: "#ffffff"
+        anchors.fill: parent
+
+        Bubble {
+            id: bubble
+        }
     }
 }

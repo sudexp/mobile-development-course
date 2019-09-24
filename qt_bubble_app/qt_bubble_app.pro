@@ -1,4 +1,4 @@
-QT += quick
+QT += quick sensors svg xml
 
 CONFIG += c++11
 

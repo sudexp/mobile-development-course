@@ -1,0 +1,32 @@
+QMAKE_CXX.QT_COMPILER_STDCXX = 201402L
+QMAKE_CXX.QMAKE_APPLE_CC = 6000
+QMAKE_CXX.QMAKE_APPLE_CLANG_MAJOR_VERSION = 8
+QMAKE_CXX.QMAKE_APPLE_CLANG_MINOR_VERSION = 0
+QMAKE_CXX.QMAKE_APPLE_CLANG_PATCH_VERSION = 7
+QMAKE_CXX.QMAKE_GCC_MAJOR_VERSION = 4
+QMAKE_CXX.QMAKE_GCC_MINOR_VERSION = 2
+QMAKE_CXX.QMAKE_GCC_PATCH_VERSION = 1
+QMAKE_CXX.COMPILER_MACROS = \
+    QT_COMPILER_STDCXX \
+    QMAKE_APPLE_CC \
+    QMAKE_APPLE_CLANG_MAJOR_VERSION \
+    QMAKE_APPLE_CLANG_MINOR_VERSION \
+    QMAKE_APPLE_CLANG_PATCH_VERSION \
+    QMAKE_GCC_MAJOR_VERSION \
+    QMAKE_GCC_MINOR_VERSION \
+    QMAKE_GCC_PATCH_VERSION
+QMAKE_CXX.INCDIRS = \
+    /Users/sudex/Library/Android/sdk/ndk/20.0.5594570/sysroot/usr/include/x86_64-linux-android \
+    /Users/sudex/Library/Android/sdk/ndk/20.0.5594570/sources/cxx-stl/llvm-libc++/include \
+    /Users/sudex/Library/Android/sdk/ndk/20.0.5594570/sources/android/support/include \
+    /Users/sudex/Library/Android/sdk/ndk/20.0.5594570/sources/cxx-stl/llvm-libc++abi/include \
+    /Users/sudex/Library/Android/sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7/include \
+    /Users/sudex/Library/Android/sdk/ndk/20.0.5594570/sysroot/usr/include
+QMAKE_CXX.LIBDIRS = \
+    /Users/sudex/Library/Android/sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7 \
+    /Users/sudex/Library/Android/sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7/lib/linux/x86_64 \
+    /Users/sudex/Library/Android/sdk/ndk/20.0.5594570/toolchains/x86_64-4.9/prebuilt/darwin-x86_64/lib/gcc/x86_64-linux-android/4.9.x \
+    /Users/sudex/Library/Android/sdk/ndk/20.0.5594570/toolchains/x86_64-4.9/prebuilt/darwin-x86_64/x86_64-linux-android/lib64 \
+    /Users/sudex/Library/Android/sdk/ndk/20.0.5594570/platforms/android-21/arch-x86_64/usr/lib64 \
+    /Users/sudex/Library/Android/sdk/ndk/20.0.5594570/toolchains/x86_64-4.9/prebuilt/darwin-x86_64/x86_64-linux-android/lib \
+    /Users/sudex/Library/Android/sdk/ndk/20.0.5594570/platforms/android-21/arch-x86_64/usr/lib
