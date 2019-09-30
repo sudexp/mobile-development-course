@@ -2,32 +2,32 @@ import React, {useState, useEffect} from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
 import {parseString} from 'react-native-xml2js';
 
+const loadSynopsis = async (setSynopsis, props) => {
+  const show = props.navigation.getParam('show', null);
+  //console.log(show.EventID[0]);
+
+  const url = `https://www.finnkino.fi/xml/Events/?eventId=${show.EventID[0]}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.text();
+
+    parseString(data, (err, result) =>
+      err
+        ? console.log(err)
+        : setSynopsis(result.Events.Event[0].ShortSynopsis),
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const MovieDetailScreen = ({navigation}) => {
   const [synopsis, setSynopsis] = useState('');
 
   useEffect(() => {
-    loadSynopsis();
-  }, [loadSynopsis]);
-
-  const loadSynopsis = async () => {
-    const show = navigation.getParam('show', null);
-    //console.log(show.EventID[0]);
-
-    const url = `https://www.finnkino.fi/xml/Events/?eventId=${
-      show.EventID[0]
-    }`;
-
-    try {
-      const response = await fetch(url);
-      const data = await response.text();
-
-      parseString(data, (err, result) => {
-        setSynopsis(result.Events.Event[0].ShortSynopsis);
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    loadSynopsis(setSynopsis);
+  }, []);
 
   const show = navigation.getParam('show', null);
   const imageurl = show.Images[0].EventSmallImageLandscape[0];

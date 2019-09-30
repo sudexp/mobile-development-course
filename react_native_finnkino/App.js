@@ -8,13 +8,13 @@ const MainNavigator = createStackNavigator({
   MovieList: {
     screen: MovieListScreen,
     navigationOptions: () => ({
-      title: `Movie List`,
+      title: 'Movie List',
     }),
   },
   MovieDetails: {
     screen: MovieDetailsScreen,
     navigationOptions: () => ({
-      title: `Movie Details`,
+      title: 'Movie Details',
     }),
   },
 });

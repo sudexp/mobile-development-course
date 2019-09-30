@@ -10,29 +10,29 @@ import {parseString} from 'react-native-xml2js';
 import moment from 'moment';
 import ShowListItem from './ShowListItem';
 
+const fetchShows = async setShows => {
+  const currentDate = moment().format('DD.MM.YYYY');
+  const url = `https://www.finnkino.fi/xml/Schedule/?area=1015&dt=${currentDate}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.text();
+
+    parseString(data, (err, result) =>
+      err ? console.log(err) : setShows(result.Schedule.Shows[0]),
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const ShowsList = ({navigation}) => {
   const [shows, setShows] = useState({});
   // console.log(shows);
 
   useEffect(() => {
-    fetchShows();
-  }, [fetchShows]);
-
-  const fetchShows = async () => {
-    const currentDate = moment().format('DD.MM.YYYY');
-    const url = `https://www.finnkino.fi/xml/Schedule/?area=1015&dt=${currentDate}`;
-
-    try {
-      const response = await fetch(url);
-      const data = await response.text();
-
-      parseString(data, (err, result) => {
-        setShows(result.Schedule.Shows[0]);
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    fetchShows(setShows);
+  }, []);
 
   const loading = (
     <View style={styles.container}>
