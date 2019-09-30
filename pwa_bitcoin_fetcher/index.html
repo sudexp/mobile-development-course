@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Bitcoin" />
+    <meta name="theme-color" content="#685f85" />
+    <title>Bitcoin Value Fetcher</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" media="all" />
+    <link rel="manifest" href="manifest.json" />
+    <script src="index.js" type="text/javascript"></script>
+  </head>
+
+  <body onload="lastBTC()">
+    <div id="container">
+      <h1>Bitcoin Value Fetcher</h1>
+      <button onclick="fetchBitcoin()">Get it!</button>
+      <p id="bitcoinText"></p>
+    </div>
+    <script>
+      'serviceWorker' in navigator &&
+        navigator.serviceWorker.register('./serviceworker.js').then(() => console.log('Service Worker Registered'));
+    </script>
+  </body>
+</html>
