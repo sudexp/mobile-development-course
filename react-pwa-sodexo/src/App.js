@@ -13,7 +13,7 @@ const displayedDate = moment().format('DD.MM.YYYY');
 const language = 'fi';
 const proxyurl = 'https://cors-anywhere.herokuapp.com/';
 const url = `https://www.sodexo.fi/ruokalistat/output/daily_json/${restaurantId}/${currentDate}/${language}`;
-// const url = 'https://www.sodexo.fi/ruokalistat/output/daily_json/5865/2019/10/03/fi';
+// const url = 'https://www.sodexo.fi/ruokalistat/output/daily_json/5865/2019/10/05/fi';
 
 const App = () => {
   const [error, setError] = useState(false);
@@ -37,15 +37,20 @@ const App = () => {
     fetchData({ currentDate });
   }, []);
 
+  const renderItem = loading ? (
+    <Loader />
+  ) : error ? (
+    <ErrorMessage />
+  ) : items.length ? (
+    <MenuList items={items} />
+  ) : (
+    <NoData />
+  );
+
   return (
     <>
       <Header displayedDate={displayedDate} />
-      <>
-        {loading && <Loader />}
-        {error && <ErrorMessage />}
-        {!error && <MenuList items={items} />}
-        {!items.length && !loading && !error && <NoData />}
-      </>
+      {renderItem}
     </>
   );
 };
