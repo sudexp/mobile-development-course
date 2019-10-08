@@ -10,16 +10,14 @@ const App = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
+    const countRewards = () => setCount(count + 10);
+
     AdMobInterstitial.setAdUnitID('ca-app-pub-3940256099942544/1033173712');
     AdMobInterstitial.setTestDevices([AdMobInterstitial.simulatorId]);
     AdMobRewarded.setAdUnitID('ca-app-pub-3940256099942544/5224354917');
-    AdMobRewarded.addEventListener('videoCompleted', () =>
-      setCount(count + 10),
-    );
+    AdMobRewarded.addEventListener('videoCompleted', countRewards);
     return () => {
-      AdMobRewarded.addEventListener('videoCompleted', () =>
-        setCount(count + 10),
-      );
+      AdMobRewarded.removeEventListener('videoCompleted', countRewards);
     };
   }, [count]);
 
