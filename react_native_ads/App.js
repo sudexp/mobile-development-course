@@ -16,6 +16,7 @@ const App = () => {
     AdMobInterstitial.setTestDevices([AdMobInterstitial.simulatorId]);
     AdMobRewarded.setAdUnitID('ca-app-pub-3940256099942544/5224354917');
     AdMobRewarded.addEventListener('videoCompleted', countRewards);
+
     return () => {
       AdMobRewarded.removeEventListener('videoCompleted', countRewards);
     };
